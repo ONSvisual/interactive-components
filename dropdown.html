@@ -18,16 +18,17 @@
       margin:0;
     }
 
-    .money-input-container {
+    .dropdown-container {
       display: inline-block;
+      position: relative;
     }
 
-    input[type="number"] {
+    select {
       float: left;
       position: relative;
       margin: 2px 0;
       padding: 2px 0 0;
-      height: 30px;
+      height: 36px;
       outline: 0;
       border: 2px solid #206095;
       color: #206095;
@@ -36,32 +37,13 @@
       cursor: pointer;
     }
 
-    input.money-input {
-      width: 160px;
-      padding-left: 46px;
+    select {
+      width: 254px;
+      padding-left: 10px;
     }
 
-    input:focus {
-      z-index: 1;
-    }
-    input:focus {
+    select:focus {
       outline: 3px solid orange;
-    }
-
-    .money-input-container:before {
-      height: 29px;
-      width: 24px;
-      background-color: #9AB1C4;
-      position: absolute;
-      top: 4px;
-      left: 2px;
-      z-index: 2;
-      content: '£';
-      font-size: 18px;
-      color: black;
-      padding-top: 3px;
-      padding-left: 12px;
-      font-weight: bold;
     }
 
     .visuallyhidden {
@@ -75,15 +57,43 @@
       border: 0;
     }
 
+    .dropdown-container::before {
+      height: 36px;
+      width: 39px;
+      position: absolute;
+      z-index: 2;
+      top: 2px;
+      right: 0px;
+      /* bottom: 2px; */
+      background: #206095;
+      content: '';
+      pointer-events: none;
+    }
+    .dropdown-container::after {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      right: 12px;
+      margin: 16px 0 0 0;
+      border-style: solid;
+      border-width: 10px 8px 0 8px;
+      border-color: #fff transparent transparent transparent;
+      pointer-events: none;
+    }
+
   </style>
 
 </head>
 
 <body>
 
-  <div class="money-input-container">
-    <label for="net-income" class="visuallyhidden">What is your household's net income?</label>
-    <input type="number" id="net-income" class="money-input" name="net-income" value="0" min="0">
+  <div class="dropdown-container">
+    <label for="net-income-time-period" class="visuallyhidden">Net income time period:</label>
+    <select class="dropdown" id="net-income-time-period">
+      <option value="12">per month</option>
+      <option value="1">per year</option>
+      <option value="52">per week</option>
+    </select>
   </div>
 
   <script>
